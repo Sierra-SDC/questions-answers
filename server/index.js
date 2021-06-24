@@ -19,7 +19,10 @@ app.get('/qa/questions/:product_id', (req, res) => {
       res.status(500).send(err);
     } else {
       // Response Status: 200 OK
-      res.status(200).send(data);
+      res.status(200).send({
+        product_id: req.params.product_id,
+        results: data,
+      });
     }
   });
 });
@@ -34,7 +37,30 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
       res.status(500).send(err);
     } else {
       // Response Status: 200 OK
-      res.status(200).send(data);
+      res.status(200).send({
+        question: req.params.question_id,
+        // page: req.pararms.page,
+        // count: req.params.count,
+        results: data
+      });
+    }
+  });
+});
+
+//Post question to database
+// Body Parameters
+// body	text	Text of question being asked
+// name	text	Username for question asker
+// email	text	Email address for question asker
+// product_id	integer	Required ID of the Product for which the question is posted
+app.post('/qa/questions', (req, res) => {
+  db.postQuestion(req.params, (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(501).send(err);
+    } else {
+      // Response Status: 200 OK
+      res.status(201).send("CREATED");
     }
   });
 });

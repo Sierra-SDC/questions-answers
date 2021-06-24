@@ -17,8 +17,7 @@ const getQuestions = (id, cb) => {
       console.error(err);
       cb(err);
     } else {
-      const result = res.rows;
-      cb(null, result);
+      cb(null, res.rows);
     }
   });
 };
@@ -34,8 +33,7 @@ const getAnswers = (id, cb) => {
       console.error(err);
       cb(err);
     } else {
-      const result = res.rows;
-      cb(null, result);
+      cb(null, res.rows);
     }
   });
 };
