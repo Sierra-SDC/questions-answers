@@ -29,9 +29,9 @@ CREATE TABLE answers (
   helpful INT DEFAULT 0,
 );
 
-/copy answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
-FROM './csv/answers.csv'
-DELIMITER ',' CSV HEADER;
+-- /copy answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
+-- FROM './csv/answers.csv'
+-- DELIMITER ',' CSV HEADER;
 
 CREATE TABLE photos (
   id SERIAL PRIMARY KEY,
@@ -39,10 +39,7 @@ CREATE TABLE photos (
   url VARCHAR(500) NOT NULL,
 );
 
-/copy answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
-FROM './csv/answers.csv'
-DELIMITER ',' CSV HEADER;
+-- /copy photos (id, answer_id, url)
+-- FROM './csv/answers_photos.csv'
+-- DELIMITER ',' CSV HEADER;
 
-/copy photos (id, answer_id, url)
-FROM './csv/answers_photos.csv'
-DELIMITER ',' CSV HEADER;
