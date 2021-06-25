@@ -12,19 +12,22 @@ product_id	integer	Specifies the product for which to retrieve questions.
 page	integer	Selects the page of results to return. Default 1.
 count	integer	Specifies how many results per page to return. Default 5.
 */
-app.get('/qa/questions/:product_id', (req, res) => {
+app.get('/qa/questions/:product_id', async (req, res) => {
   db.getQuestions(req.params.product_id, (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send(err);
-    } else {
-      // Response Status: 200 OK
-      res.status(200).send({
-        product_id: req.params.product_id,
-        results: data,
-      });
-    }
-  });
+      if (err){
+        send(err)
+      } else {
+        res.send(data)
+      }
+      // db.getQuestionsAnswers(question.id, (err, answers) => {
+      //   if (err) {
+      //     console.error(err);
+      //       res.status(500).send(err);
+      //     } else {
+      //       res.status(200).send({q:questions, a:answers});
+      //     }
+      // });
+    });
 });
 
 //Retrive all answers from question_id in db
@@ -54,7 +57,8 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 // email	text	Email address for question asker
 // product_id	integer	Required ID of the Product for which the question is posted
 app.post('/qa/questions', (req, res) => {
-  db.postQuestion(req.params, (err, data) => {
+  console.log(req);
+  db.postQuestion(req.body, (err, data) => {
     if (err) {
       console.error(err);
       res.status(501).send(err);

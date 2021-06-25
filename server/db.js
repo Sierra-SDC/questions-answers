@@ -12,7 +12,29 @@ const pool = new Pool({
 
 //Retrive all questions from product_id in db
 const getQuestions = (id, cb) => {
-  pool.query(`SELECT * FROM questions WHERE product_id = ${id}`, (err, res) => {
+  let questionsQuery = `SELECT
+  questions.id AS question_id,
+  questions.body AS question_body,
+  questions.date_written AS question_date,
+  questions.asker_name,
+  questions.helpful AS question_helpfulness,
+  questions.reported,
+
+  answers.body,
+  answers.date_written AS date,
+  answerer_name,
+  answers.helpful AS helpfulness,
+
+  photos.id AS id,
+  photos.url AS url
+
+  FROM questions
+  LEFT JOIN answers ON (questions.id = answers.question_id)
+  LEFT JOIN photos ON (answers.id = photos.answer_id)
+
+  WHERE questions.product_id = ${id}`
+
+    pool.query(questionsQuery, (err, res) => {
     if (err) {
       console.error(err);
       cb(err);
@@ -21,6 +43,34 @@ const getQuestions = (id, cb) => {
     }
   });
 };
+
+// const getQuestionsAnswers = (id, cb) => {
+//   let answersQuery = `SELECT id, answers.body, answers.date_written AS date, answerer_name, answers.helpful AS helpfulness
+//   FROM answers WHERE question_id = ${id};`
+
+//     pool.query(answersQuery, (err, res) => {
+//     if (err) {
+//       console.error(err);
+//       cb(err);
+//     } else {
+//       cb(null, res.rows);
+//     }
+//   });
+// };
+
+// const getQuestionsPhotos = (id, cb) => {
+//   let photosQuery = `SELECT url, thumbnail_url
+//   FROM photos WHERE anwers_id = ${id};`
+
+//     pool.query(answersQuery, (err, res) => {
+//     if (err) {
+//       console.error(err);
+//       cb(err);
+//     } else {
+//       cb(null, res.rows);
+//     }
+//   });
+// };
 
 // Retreive all answers from question_id in db
 // Query Parameters
@@ -38,8 +88,27 @@ const getAnswers = (id, cb) => {
   });
 };
 
+// Retreive all answers from question_id in db
+// Query Parameters
+// Parameter	Type	Description
+// page	integer	Selects the page of results to return. Default 1.
+// count	integer	Specifies how many results per page to return. Default 5.
+const postQuestion = (body, cb) => {
+  console.log(body);
+  pool.query(`INSERT INTO questions (product_id,body, asker_name, asker_email) VALUES ($1, $2, $3, $4)`, [body.product_id, body.body, body.name, body.email], (err, res) => {
+    if (err) {
+      console.error(err);
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
+
 
 module.exports = {
   getQuestions: getQuestions,
   getAnswers: getAnswers,
+  postQuestion: postQuestion,
 }

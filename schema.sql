@@ -7,7 +7,7 @@ CREATE TABLE questions (
   id SERIAL PRIMARY KEY,
   product_id INT,
   body VARCHAR(1000) NOT NULL,
-  date_written VARCHAR(100),
+  date_written VARCHAR(100) DEFAULT EXTRACT(EPOCH FROM NOW()),
   asker_name VARCHAR(50) NOT NULL,
   asker_email VARCHAR(100) NOT NULL,
   reported INT DEFAULT 0,
