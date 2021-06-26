@@ -56,7 +56,23 @@ WHERE questions.product_id = $1 AND questions.reported = 0;`
 
 
 const getAnswers = (id, cb) => {
-  pool.query(`SELECT * FROM answers WHERE question_id = ${id}`, (err, res) => {
+  let answersQuery = `SELECT
+    'answer_id', answers.id,
+    'body', answers.body,
+    'date', answers.date_written,
+    'answerer_name', answerer_name,
+    'helpfulness', answers.helpful,
+    (
+      SELECT jsonb_agg(jsonb_build_object(
+        'id', photos.id,
+        'url', photos.url
+        ))
+      FROM photos
+      WHERE answers.id = photos.answer_id
+    ) AS "photos"
+  FROM answers
+  WHERE $1 = answers.question_id`
+  pool.query(answersQuery, [id], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);
@@ -72,8 +88,8 @@ const getAnswers = (id, cb) => {
 // page	integer	Selects the page of results to return. Default 1.
 // count	integer	Specifies how many results per page to return. Default 5.
 const postQuestion = (body, cb) => {
-  console.log(body);
-  pool.query(`INSERT INTO questions (product_id,body, asker_name, asker_email) VALUES ($1, $2, $3, $4)`, [body.product_id, body.body, body.name, body.email], (err, res) => {
+  let postQuestionQuery = `INSERT INTO questions (product_id,body, asker_name, asker_email) VALUES ($1, $2, $3, $4)`
+  pool.query(postQuestionQuery, [body.product_id, body.body, body.name, body.email], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);

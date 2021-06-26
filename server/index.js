@@ -14,15 +14,13 @@ count	integer	Specifies how many results per page to return. Default 5.
 */
 app.get('/qa/questions/:product_id', async (req, res) => {
   db.getQuestions(req.params.product_id, (err, data) => {
-      if (err){
-        send(err)
-      } else {
-        res.send({
-          product_id: req.params.product_id,
-          results: data
-        })
-      }
-    });
+    if (err) {
+    console.error(err);
+    res.status(500).send(err);
+  } else {
+    res.status(200).send(data);
+  }
+  });
 });
 
 //Retrive all answers from question_id in db
@@ -35,12 +33,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
       res.status(500).send(err);
     } else {
       // Response Status: 200 OK
-      res.status(200).send({
-        question: req.params.question_id,
-        // page: req.pararms.page,
-        // count: req.params.count,
-        results: data
-      });
+      res.status(200).send(data);
     }
   });
 });
