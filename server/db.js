@@ -13,25 +13,32 @@ const pool = new Pool({
 //Retrive all questions from product_id in db
 const getQuestions = (id, cb) => {
   let questionsQuery = `SELECT
-  questions.id AS question_id,
-  questions.body AS question_body,
-  questions.date_written AS question_date,
-  questions.asker_name,
-  questions.helpful AS question_helpfulness,
-  questions.reported,
-
-  answers.body,
-  answers.date_written AS date,
-  answerer_name,
-  answers.helpful AS helpfulness,
-
-  photos.id AS id,
-  photos.url AS url
-
+  'question_id', questions.id,
+  'question_body', questions.body,
+  'question_date', questions.date_written,
+  'asker_name', questions.asker_name,
+  'question_helpfulness', questions.helpful,
+  'reported', questions.reported,
+  'answers', (
+    SELECT jsonb_agg(jsonb_build_object(
+      'id', answers.id,
+      'body', answers.body,
+      'date', answers.date_written,
+      'answerer_name', answerer_name,
+      'helpfulness', answers.helpful,
+      'photos', (
+        SELECT jsonb_agg(jsonb_build_object(
+          'is', photos.id,
+          'url', photos.url
+          ))
+        FROM photos
+        WHERE answers.id = photos.answer_id
+      )
+    ))
+    FROM answers
+    WHERE questions.id = answers.question_id
+  )
   FROM questions
-  LEFT JOIN answers ON (questions.id = answers.question_id)
-  LEFT JOIN photos ON (answers.id = photos.answer_id)
-
   WHERE questions.product_id = ${id}`
 
     pool.query(questionsQuery, (err, res) => {
