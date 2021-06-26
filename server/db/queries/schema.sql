@@ -17,11 +17,6 @@ CREATE TABLE IF NOT EXISTS public.questions
     PRIMARY KEY (id)
 );
 
-COPY questions (id, product_id, body, date_written, asker_name, asker_email, reported, helpful)
-FROM './csv/questions.csv'
-DELIMITER ','
-CSV HEADER;
-
 CREATE TABLE IF NOT EXISTS public.answers
 (
     id integer NOT NULL,
@@ -35,11 +30,6 @@ CREATE TABLE IF NOT EXISTS public.answers
     PRIMARY KEY (id)
 );
 
-COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
-FROM './csv/answers.csv'
-DELIMITER ','
-CSV HEADER;
-
 CREATE TABLE IF NOT EXISTS public.photos
 (
     id integer NOT NULL,
@@ -47,11 +37,6 @@ CREATE TABLE IF NOT EXISTS public.photos
     url character varying(500) NOT NULL,
     PRIMARY KEY (id)
 );
-
-COPY photos (id, answer_id, url)
-FROM './csv/answers_photos.csv'
-DELIMITER ','
-CSV HEADER;
 
 ALTER TABLE public.answers
     ADD FOREIGN KEY (question_id)
@@ -63,6 +48,22 @@ ALTER TABLE public.photos
     ADD FOREIGN KEY (answer_id)
     REFERENCES public.answers (id)
     NOT VALID;
+
+
+COPY questions (id, product_id, body, date_written, asker_name, asker_email, reported, helpful)
+FROM '/home/tristan/HackReactor/SDC/questions-answers/csv/questions.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY answers (id, question_id, body, date_written, answerer_name, answerer_email, reported, helpful)
+FROM '/home/tristan/HackReactor/SDC/questions-answers/csv/answers.csv'
+DELIMITER ','
+CSV HEADER;
+
+COPY photos (id, answer_id, url)
+FROM '/home/tristan/HackReactor/SDC/questions-answers/csv/answers_photos.csv'
+DELIMITER ','
+CSV HEADER;
 
 CREATE UNIQUE INDEX questions_idx ON questions (product_id);
 CREATE UNIQUE INDEX answers_idx ON answers (questions_id);
