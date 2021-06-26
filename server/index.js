@@ -17,16 +17,11 @@ app.get('/qa/questions/:product_id', async (req, res) => {
       if (err){
         send(err)
       } else {
-        res.send(data)
+        res.send({
+          product_id: req.params.product_id,
+          results: data
+        })
       }
-      // db.getQuestionsAnswers(question.id, (err, answers) => {
-      //   if (err) {
-      //     console.error(err);
-      //       res.status(500).send(err);
-      //     } else {
-      //       res.status(200).send({q:questions, a:answers});
-      //     }
-      // });
     });
 });
 
