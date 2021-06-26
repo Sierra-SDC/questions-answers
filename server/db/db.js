@@ -99,10 +99,87 @@ const postQuestion = (body, cb) => {
   });
 };
 
+/* Post Answer Query */
+const postAnswer = (body, cb) => {
+  console.log(body);
+  let postAnswerQuery = ``
+  pool.query(postAnswerQuery, [], (err, res) => {
+    if (err) {
+      console.error(err);
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
+/* Mark Question as Helpful */
+const putQuestionHelpful = (body, cb) => {
+  console.log(body);
+  let putQuestionHelpfulQuery = ``
+  pool.query(putQuestionHelpfulQuery, [], (err, res) => {
+    if (err) {
+      console.error(err);
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
+/*Report Question */
+const putQuestionReport = (body, cb) => {
+  console.log(body);
+  let putQuestionReportQuery = ``
+  pool.query(postQuestionQuery, [], (err, res) => {
+    if (err) {
+      console.error(err);
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
+/*Helpful Answer */
+const putAnswerhelpful = (body, cb) => {
+  console.log(body);
+  let putAnswerhelpfulQuery = ``
+  pool.query(putAnswerhelpfulQuery, [], (err, res) => {
+    if (err) {
+      console.error(err);
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
+/*Report Answer */
+const putAnswerReport = (body, cb) => {
+  console.log(body);
+  let putAnswerReportQuery = ``
+  pool.query(putAnswerReportQuery, [], (err, res) => {
+    if (err) {
+      console.error(err);
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
+};
+
+
+
 
 
 module.exports = {
   getQuestions: getQuestions,
   getAnswers: getAnswers,
   postQuestion: postQuestion,
+  postAnswer: postAnswer,
+  putQuestionHelpful: putQuestionHelpful,
+  putQuestionReport: putQuestionReport,
+  putAnswerhelpful: putAnswerhelpful,
+  putAnswerReport: putAnswerReport
 }
