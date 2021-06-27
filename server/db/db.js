@@ -104,7 +104,6 @@ const postQuestion = (body, cb) => {
 
 /* Post Answer Query */
 const postAnswer = (req, cb) => {
-  console.log(req.params.question_id);
   let postAnswerQuery = `INSERT INTO answers (question_id, body, answerer_name, answerer_email) VALUES ($1, $2, $3, $4)`
   pool.query(postAnswerQuery, [req.params.question_id, req.body.body, req.body.name, req.body.email], (err, res) => {
     if (err) {
@@ -117,10 +116,9 @@ const postAnswer = (req, cb) => {
 };
 
 /* Mark Question as Helpful */
-const putQuestionHelpful = (body, cb) => {
-  console.log(body);
-  let putQuestionHelpfulQuery = ``
-  pool.query(putQuestionHelpfulQuery, [], (err, res) => {
+const putQuestionHelpful = (req, cb) => {
+  let putQuestionHelpfulQuery = `UPDATE questions SET helpful = helpful + 1 WHERE id =$1`
+  pool.query(putQuestionHelpfulQuery, [req.params.question_id], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);
@@ -131,10 +129,10 @@ const putQuestionHelpful = (body, cb) => {
 };
 
 /*Report Question */
-const putQuestionReport = (body, cb) => {
-  console.log(body);
-  let putQuestionReportQuery = ``
-  pool.query(postQuestionQuery, [], (err, res) => {
+const putQuestionReport = (req, cb) => {
+  console.log(req);
+  let putQuestionReportQuery = `UPDATE questions SET report = 1 WHERE id =$1`
+  pool.query(postQuestionQuery, [req.params.question_id], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);
@@ -145,10 +143,10 @@ const putQuestionReport = (body, cb) => {
 };
 
 /*Helpful Answer */
-const putAnswerhelpful = (body, cb) => {
-  console.log(body);
-  let putAnswerhelpfulQuery = ``
-  pool.query(putAnswerhelpfulQuery, [], (err, res) => {
+const putAnswerhelpful = (req, cb) => {
+  console.log(req);
+  let putAnswerhelpfulQuery = `UPDATE answers SET helpful = helpful + 1 WHERE id =$1`
+  pool.query(putAnswerhelpfulQuery, [req.params.answer_id], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);
@@ -159,10 +157,10 @@ const putAnswerhelpful = (body, cb) => {
 };
 
 /*Report Answer */
-const putAnswerReport = (body, cb) => {
-  console.log(body);
-  let putAnswerReportQuery = ``
-  pool.query(putAnswerReportQuery, [], (err, res) => {
+const putAnswerReport = (req, cb) => {
+  console.log(req);
+  let putAnswerReportQuery = `UPDATE answers SET report = 1 WHERE id =$1`
+  pool.query(putAnswerReportQuery, [req.params.answer_id], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);

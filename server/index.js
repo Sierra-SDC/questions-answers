@@ -109,7 +109,7 @@ Status: 204 NO CONTENT
 */
 
 app.put(`/qa/questions/:question_id/helpful`, (req, res) => {
-  db.putQuestionHelpful(req.body, (err, data) => {
+  db.putQuestionHelpful(req, (err, data) => {
     if (err) {
       console.error(err);
       res.status(501).send(err);
@@ -135,7 +135,7 @@ Status: 204 NO CONTENT
 */
 
 app.put(`/qa/questions/:question_id/report`, (req, res) => {
-  db.putQuestionReport(req.body, (err, data) => {
+  db.putQuestionReport(req, (err, data) => {
     if (err) {
       console.error(err);
       res.status(501).send(err);
