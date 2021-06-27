@@ -197,7 +197,4 @@ app.put(`/qa/answers/:answer_id/report`, (req, res) => {
   });
 });
 
-
-app.listen(PORT, () => {
-  console.log(`App running on port ${PORT}.`);
-});
+module.exports = app;
