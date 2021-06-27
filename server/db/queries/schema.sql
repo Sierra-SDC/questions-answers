@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.answers
     id integer NOT NULL,
     question_id integer,
     body character varying(1000) NOT NULL,
-    date_written character varying(100),
+    date_written character varying(100) DEFAULT TIMESTAMP,
     answerer_name character varying(50) NOT NULL,
     answerer_email character varying(100) NOT NULL,
     reported integer,
@@ -65,9 +65,6 @@ ALTER TABLE public.photos
     ADD FOREIGN KEY (answer_id)
     REFERENCES public.answers (id)
     NOT VALID;
-
-
-
 
 CREATE UNIQUE INDEX questions_idx ON questions (product_id);
 CREATE UNIQUE INDEX answers_idx ON answers (questions_id);

@@ -18,7 +18,10 @@ app.get('/qa/questions/:product_id', async (req, res) => {
     console.error(err);
     res.status(500).send(err);
   } else {
-    res.status(200).send(data);
+    res.status(200).send({
+      "product_id": req.params.product_id,
+      "results": data,
+    });
   }
   });
 });
@@ -27,13 +30,20 @@ app.get('/qa/questions/:product_id', async (req, res) => {
 // Parameter	Type	Description
 // question_id	integer	Required ID of the question for wich answers are needed
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  db.getAnswers(req.params.question_id, (err, data) => {
+  req.params.page = req.params.page|| 0;
+  req.params.count = req.params.count|| 5;
+  db.getAnswers({id: req.params.question_id, page: req.params.page, count: req.params.count}, (err, data) => {
     if (err) {
       console.error(err);
       res.status(500).send(err);
     } else {
       // Response Status: 200 OK
-      res.status(200).send(data);
+      res.status(200).send({
+        "product_id": req.params.question_id,
+        "page": req.params.page,
+        "count": req.params.count,
+        "results": data,
+      });
     }
   });
 });
@@ -150,7 +160,7 @@ Response
 Status: 204 NO CONTENT
 */
 app.put(`/qa/answers/:answer_id/helpful`, (req, res) => {
-  db.putAnswerReport(req.body, (err, data) => {
+  db.putAnswerhelpful(req.body, (err, data) => {
     if (err) {
       console.error(err);
       res.status(501).send(err);

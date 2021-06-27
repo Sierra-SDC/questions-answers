@@ -19,7 +19,6 @@ questions.date_written AS "question_date",
 questions.asker_name,
 questions.helpful AS "question_helpfulness",
 questions.reported,
-
 (
   SELECT jsonb_agg(jsonb_build_object(
     'id', answers.id,
@@ -55,24 +54,28 @@ WHERE questions.product_id = $1 AND questions.reported = 0;`
 };
 
 
-const getAnswers = (id, cb) => {
-  let answersQuery = `SELECT
-    'answer_id', answers.id,
-    'body', answers.body,
-    'date', answers.date_written,
-    'answerer_name', answerer_name,
-    'helpfulness', answers.helpful,
-    (
-      SELECT jsonb_agg(jsonb_build_object(
-        'id', photos.id,
-        'url', photos.url
-        ))
-      FROM photos
-      WHERE answers.id = photos.answer_id
-    ) AS "photos"
-  FROM answers
-  WHERE $1 = answers.question_id`
-  pool.query(answersQuery, [id], (err, res) => {
+const getAnswers = ({id, page, count}, cb) => {
+  let answersQuery = `
+      SELECT
+        answers.id AS "answer_id",
+        answers.body AS "body",
+        answers.date_written AS "date",
+        answerer_name AS "asnwerer_name",
+        answers.helpful AS "helpfulness",
+        (
+            SELECT jsonb_agg(jsonb_build_object(
+            'id', photos.id,
+            'url', photos.url
+            )) AS "photos"
+        FROM photos
+        WHERE answers.id = photos.answer_id
+      )
+
+    FROM answers
+    WHERE $1 = answers.question_id
+    LIMIT $2
+    ;`
+  pool.query(answersQuery, [id, count], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);
