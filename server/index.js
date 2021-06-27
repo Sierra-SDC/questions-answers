@@ -81,7 +81,7 @@ Status: 201 CREATED
 */
 
 app.post(`/qa/questions/:question_id/answers`, (req, res) => {
-  db.postAnswer(req.body, (err, data) => {
+  db.postAnswer(req, (err, data) => {
     if (err) {
       console.error(err);
       res.status(501).send(err);

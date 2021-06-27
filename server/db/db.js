@@ -103,10 +103,10 @@ const postQuestion = (body, cb) => {
 };
 
 /* Post Answer Query */
-const postAnswer = (body, cb) => {
-  console.log(body);
-  let postAnswerQuery = ``
-  pool.query(postAnswerQuery, [], (err, res) => {
+const postAnswer = (req, cb) => {
+  console.log(req.params.question_id);
+  let postAnswerQuery = `INSERT INTO answers (question_id, body, answerer_name, answerer_email) VALUES ($1, $2, $3, $4)`
+  pool.query(postAnswerQuery, [req.params.question_id, req.body.body, req.body.name, req.body.email], (err, res) => {
     if (err) {
       console.error(err);
       cb(err);

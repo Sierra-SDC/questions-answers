@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS public.questions
     id integer NOT NULL,
     product_id integer,
     body character varying(1000) NOT NULL,
-    date_written character varying(100),
+    date_written character varying(100) DEFAULT now(),
     asker_name character varying(50) NOT NULL,
     asker_email character varying(100) NOT NULL,
     reported integer,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS public.answers
     id integer NOT NULL,
     question_id integer,
     body character varying(1000) NOT NULL,
-    date_written character varying(100) DEFAULT TIMESTAMP,
+    date_written character varying(100) DEFAULT now(),
     answerer_name character varying(50) NOT NULL,
     answerer_email character varying(100) NOT NULL,
     reported integer,
@@ -66,6 +66,12 @@ ALTER TABLE public.photos
     REFERENCES public.answers (id)
     NOT VALID;
 
+
+
 CREATE UNIQUE INDEX questions_idx ON questions (product_id);
 CREATE UNIQUE INDEX answers_idx ON answers (questions_id);
 CREATE UNIQUE INDEX photos_idx ON photos (answers_id);
+
+-- SELECT pg_catalog.setval(pg_get_serial_sequence('questions', 'id'), (SELECT MAX(id) FROM questions)+1);
+-- SELECT pg_catalog.setval(pg_get_serial_sequence('answers', 'id'), (SELECT MAX(id) FROM answers)+1);
+-- SELECT pg_catalog.setval(pg_get_serial_sequence('photos', 'id'), (SELECT MAX(id) FROM photos)+1);
