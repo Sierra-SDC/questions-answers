@@ -7,7 +7,7 @@ const pool = new Pool({
   host: process.env.DB_HOST,
   database: 'qa_db',
   password: process.env.DB_PASS,
-  port: 5433,
+  port: 5432,
 });
 
 //Retrive all questions from product_id in db
@@ -169,9 +169,6 @@ const putAnswerReport = (req, cb) => {
     }
   });
 };
-
-
-
 
 
 module.exports = {

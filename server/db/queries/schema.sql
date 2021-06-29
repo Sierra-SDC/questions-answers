@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS qa_db_test;
 
 CREATE DATABASE qa_db_test;
 
-USE DATABASE qa_db_;
+\c DATABASE qa_db_;
 
 CREATE TABLE IF NOT EXISTS public.questions
 

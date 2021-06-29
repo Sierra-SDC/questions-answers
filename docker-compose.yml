@@ -1,27 +1,15 @@
-version: '3.8'
-
-volumes:
-  csv:
-
+version: "3"
 services:
   db:
-    volumes:
-      - csv:/home/tristan/HackReactor/SDC/csv:ro
-    container_name: pg_container
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: qa
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgress
+      - POSTGRES_DB=postgres
     ports:
-      - "5432:5432"
-  pgadmin:
-    container_name: pgadmin4_container
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: tristanlerisse@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:80"
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

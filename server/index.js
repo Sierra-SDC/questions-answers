@@ -2,8 +2,6 @@ const express = require('express');
 const db = require('./db/db.js');
 const app = express();
 
-const PORT = 3000;
-
 app.use(express.json());
 
 //Retrive all questions from product_id in db
