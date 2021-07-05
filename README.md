@@ -64,7 +64,10 @@
 Plan and implement an AWS architecture to serve ~10 Million products to the client React app. Goal was to be able to handle ~10,000 requests per second.
 
 ### List Questions
-GET /qa/questions Retrieves a list of questions for a particular product. This list does not include any reported questions.
+```sh
+GET /qa/questions 
+```
+Retrieves a list of questions for a particular product. This list does not include any reported questions.
 
 #### Parameters
 
