@@ -82,16 +82,18 @@ Returns answers for a given question. This list does not include any reported an
 
 GET /qa/questions/:question_id/answers
 
-Parameters
+#### Parameters
 
-Parameter	Type	Description
-question_id	integer	Required ID of the question for wich answers are needed
-Query Parameters
+|Parameter|Type|Description|
+|question_id|integer|Required ID of the question for wich answers are needed|
 
-Parameter	Type	Description
-page	integer	Selects the page of results to return. Default 1.
-count	integer	Specifies how many results per page to return. Default 5.
-Response
+#### QueryParameters
+
+|Parameter|Type|Description|
+|page|integer|Selects the page of results to return. Default 1.|
+|count|integer|Specifies how many results per page to return. Default 5.|
+
+#### Response
 
 Status: 200 OK
 
@@ -100,14 +102,15 @@ Adds a question for the given product
 
 POST /qa/questions
 
-Body Parameters
+#### Body Parameters
 
-Parameter	Type	Description
-body	text	Text of question being asked
-name	text	Username for question asker
-email	text	Email address for question asker
-product_id	integer	Required ID of the Product for which the question is posted
-Response
+|Parameter|Type|Description|
+|body|text|Text of question being asked|
+|name|text|Username for question asker|
+|email|text|Email address for question asker|
+product_id|integer|Required ID of the Product for which the question is posted|
+
+#### Response
 
 Status: 201 CREATED
 
@@ -116,18 +119,20 @@ Adds an answer for the given question
 
 POST /qa/questions/:question_id/answers
 
-Parameters
+#### Parameters
 
-Parameter	Type	Description
-question_id	integer	Required ID of the question to post the answer for
-Body Parameters
+|Parameter|Type|Description|
+|question_id|integer|Required ID of the question to post the answer for|
 
-Parameter	Type	Description
-body	text	Text of question being asked
-name	text	Username for question asker
-email	text	Email address for question asker
-photos	[text]	An array of urls corresponding to images to display
-Response
+#### Body Parameters
+
+|Parameter|Type|Description|
+|body|text|Text of question being asked|
+|name|text|Username for question asker|
+|email|text|Email address for question asker|
+|photos|[text]|An array of urls corresponding to images to display|
+
+#### Response
 
 Status: 201 CREATED
 
@@ -136,11 +141,12 @@ Updates a question to show it was found helpful.
 
 PUT /qa/questions/:question_id/helpful
 
-Parameters
+#### Parameters
 
-Parameter	Type	Description
-question_id	integer	Required ID of the question to update
-Response
+|Parameter|Type|Description|
+|question_id|integer|Required ID of the question to update|
+
+#### Response
 
 Status: 204 NO CONTENT
 
