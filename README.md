@@ -110,7 +110,7 @@ https://github.com/lerisse/project-catwalk
 ## Tests
 
 Initial Postgres query
-
+```sh
 Seq Scan on questions  (cost=0.00..8169534.57 rows=9 width=116) (actual time=735.729..3163.416 rows=4 loops=1)
   Filter: ((product_id = 11008) AND (reported = 0))
   Rows Removed by Filter: 3518963
@@ -130,6 +130,7 @@ JIT:
   Options: Inlining true, Optimization true, Expressions true, Deforming true
   Timing: Generation 1.239 ms, Inlining 48.318 ms, Optimization 71.709 ms, Emission 45.062 ms, Total 166.328 ms
 Execution Time: 3199.905 ms
+```
 
 <!-- LICENSE -->
 ## License
