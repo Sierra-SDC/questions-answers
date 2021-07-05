@@ -51,7 +51,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Tests</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -65,41 +65,35 @@ Plan and implement an AWS architecture to serve ~10 Million products to the clie
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [AWS](https://getbootstrap.com)
-* [Expressjs](https://jquery.com)
-* [Laravel](https://laravel.com)
+* [AWS](https://aws.amazon.com/)
+* [Express](https://expressjs.com/)
+* [Nginx](https://www.nginx.com/)
+* [Redis](https://redis.io/)
+* [Postgres](https://www.postgresql.org/)
 
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
+### Docker
+
+Dockerfile can be found within the repo.
+* docker run
+  ```sudo docker run -it -d -p 80:3000 --name api-server docker-api-server:latest
   ```
 
-### Installation
+### Manual Server API Installation (AWS EC2 T2 Micro)
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/Sierra-SDC/questions-answers
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
    ```
 
 
