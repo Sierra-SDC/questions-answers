@@ -85,11 +85,13 @@ GET /qa/questions/:question_id/answers
 #### Parameters
 
 |Parameter|Type|Description|
+|---|---|---|
 |question_id|integer|Required ID of the question for wich answers are needed|
 
 #### QueryParameters
 
 |Parameter|Type|Description|
+|---|---|---|
 |page|integer|Selects the page of results to return. Default 1.|
 |count|integer|Specifies how many results per page to return. Default 5.|
 
@@ -105,6 +107,7 @@ POST /qa/questions
 #### Body Parameters
 
 |Parameter|Type|Description|
+|---|---|---|
 |body|text|Text of question being asked|
 |name|text|Username for question asker|
 |email|text|Email address for question asker|
@@ -122,11 +125,13 @@ POST /qa/questions/:question_id/answers
 #### Parameters
 
 |Parameter|Type|Description|
+|---|---|---|
 |question_id|integer|Required ID of the question to post the answer for|
 
 #### Body Parameters
 
 |Parameter|Type|Description|
+|---|---|---|
 |body|text|Text of question being asked|
 |name|text|Username for question asker|
 |email|text|Email address for question asker|
@@ -144,6 +149,7 @@ PUT /qa/questions/:question_id/helpful
 #### Parameters
 
 |Parameter|Type|Description|
+|---|---|---|
 |question_id|integer|Required ID of the question to update|
 
 #### Response
