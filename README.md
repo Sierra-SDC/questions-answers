@@ -41,7 +41,14 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#list-questions">List Questions</a></li>
+        <li><a href="#answers-List">Answers List</a></li>
+        <li><a href="#add-a-question">Add a Question</a></li>  
+        <li><a href="#add-an-answer">Add an Answer</a></li>
+        <li><a href="#mark-question-helpful">Mark Question as Helpful</a></li>
+        <li><a href="#report-question">Report Question</a></li>  
+        <li><a href="#mark-answer-helpful">Mark Answer as Helpful</a></li>
+        <li><a href="#report-answer">Report Answer</a></li>  
       </ul>
     </li>
     <li><a href="#built-with">Built With</a></li>
