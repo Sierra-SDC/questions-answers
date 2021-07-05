@@ -17,19 +17,18 @@
 <p align="center">
     <img src="/Screenshots/Web App Reference Architecture Transparant Black.png" alt="Logo">
 
-  <h3 align="center">SDC Q/A Project</h3>
+  <h3 align="center">AWS SDC Microservices Project</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    Implementing a back-end infrastructure for client e-commerce react app.
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <br />
+    <a href="https://www.linkedin.com/in/tristanlerisse/">Please reqest to view demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/Sierra-SDC/questions-answers/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/Sierra-SDC/questions-answers/issues">Request Feature</a>
   </p>
 </p>
 
@@ -192,7 +191,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/Sierra-SDC/questions-answers/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
