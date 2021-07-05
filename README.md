@@ -131,7 +131,6 @@ Initial Postgres query
 "  Timing: Generation 1.239 ms, Inlining 48.318 ms, Optimization 71.709 ms, Emission 45.062 ms, Total 166.328 ms"
 "Execution Time: 3199.905 ms"
 
-
 <!-- LICENSE -->
 ## License
 
