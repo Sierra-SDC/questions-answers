@@ -82,9 +82,9 @@ Status: 200 OK
 
 ### Answers List
 Returns answers for a given question. This list does not include any reported answers.
-
+```sh
 GET /qa/questions/:question_id/answers
-
+```
 #### Parameters
 
 |Parameter|Type|Description|
@@ -104,9 +104,9 @@ Status: 200 OK
 
 ### Add a Question
 Adds a question for the given product
-
+```sh
 POST /qa/questions
-
+```
 #### Body Parameters
 
 |Parameter|Type|Description|
@@ -122,9 +122,9 @@ Status: 201 CREATED
 
 ### Add an Answer
 Adds an answer for the given question
-
+```sh
 POST /qa/questions/:question_id/answers
-
+```
 #### Parameters
 
 |Parameter|Type|Description|
@@ -146,9 +146,9 @@ Status: 201 CREATED
 
 ### Mark Question as Helpful
 Updates a question to show it was found helpful.
-
+```sh
 PUT /qa/questions/:question_id/helpful
-
+```
 #### Parameters
 
 |Parameter|Type|Description|
@@ -161,40 +161,46 @@ Status: 204 NO CONTENT
 
 ### Report Question
 Updates a question to show it was reported. Note, this action does not delete the question, but the question will not be returned in the above GET request.
-
+```sh
 PUT /qa/questions/:question_id/report
+```
+#### Parameters
 
-Parameters
+|Parameter|Type|Description
+|---|---|---|
+|question_id|integer|Required ID of the question to update
 
-Parameter	Type	Description
-question_id	integer	Required ID of the question to update
-Response
+#### Response
 
 Status: 204 NO CONTENT
 
 ### Mark Answer as Helpful
 Updates an answer to show it was found helpful.
-
+```sh
 PUT /qa/answers/:answer_id/helpful
+```
+#### Parameters
 
-Parameters
+|Parameter|Type|Description
+|---|---|---|
+|answer_id|integer|Required ID of the answer to update
 
-Parameter	Type	Description
-answer_id	integer	Required ID of the answer to update
-Response
+#### Response
 
 Status: 204 NO CONTENT
 
 ### Report Answer
 Updates an answer to show it has been reported. Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
-
+```sh
 PUT /qa/answers/:answer_id/report
+```
+#### Parameters
 
-Parameters
+|Parameter|Type|Description
+|---|---|---|
+answer_id|integer|Required ID of the answer to update
 
-Parameter	Type	Description
-answer_id	integer	Required ID of the answer to update
-Response
+#### Response
 
 Status: 204 NO CONTENT
 
