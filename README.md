@@ -66,14 +66,15 @@ Plan and implement an AWS architecture to serve ~10 Million products to the clie
 ### List Questions
 GET /qa/questions Retrieves a list of questions for a particular product. This list does not include any reported questions.
 
-Parameters
+#### Parameters
 
-Parameter	Type	Description
-product_id	integer	Specifies the product for which to retrieve questions.
-page	integer	Selects the page of results to return. Default 1.
-count	integer	Specifies how many results per page to return. Default 5.
-Response
+|Parameter|Type|Description
+|---|---|---|
+product_id|integer|Specifies the product for which to retrieve questions.
+page|integer|Selects the page of results to return. Default 1.
+count|integer|Specifies how many results per page to return. Default 5.
 
+#### Response
 Status: 200 OK
 
 ### Answers List
