@@ -294,6 +294,10 @@ Index Scan using questions_index on questions  (cost=0.43..848.28 rows=9 width=1
 Planning Time: 0.123 ms
 Execution Time: 0.148 ms
 ```
+
+### Loader.io results
+<img src="/Screenshots/Screenshot from 2021-07-02 11-08-18.png" alt="Loader.io Test">
+
 <!-- LICENSE -->
 ## License
 
