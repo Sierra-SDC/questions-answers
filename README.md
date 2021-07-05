@@ -63,7 +63,7 @@
 
 Plan and implement an AWS architecture to serve ~10 Million products to the client React app. Goal was to be able to handle ~10,000 requests per second.
 
-###List Questions
+### List Questions
 GET /qa/questions Retrieves a list of questions for a particular product. This list does not include any reported questions.
 
 Parameters
@@ -76,7 +76,7 @@ Response
 
 Status: 200 OK
 
-###Answers List
+### Answers List
 Returns answers for a given question. This list does not include any reported answers.
 
 GET /qa/questions/:question_id/answers
@@ -94,7 +94,7 @@ Response
 
 Status: 200 OK
 
-###Add a Question
+### Add a Question
 Adds a question for the given product
 
 POST /qa/questions
@@ -110,7 +110,7 @@ Response
 
 Status: 201 CREATED
 
-###Add an Answer
+### Add an Answer
 Adds an answer for the given question
 
 POST /qa/questions/:question_id/answers
@@ -130,7 +130,7 @@ Response
 
 Status: 201 CREATED
 
-###Mark Question as Helpful
+### Mark Question as Helpful
 Updates a question to show it was found helpful.
 
 PUT /qa/questions/:question_id/helpful
@@ -143,7 +143,7 @@ Response
 
 Status: 204 NO CONTENT
 
-###Report Question
+### Report Question
 Updates a question to show it was reported. Note, this action does not delete the question, but the question will not be returned in the above GET request.
 
 PUT /qa/questions/:question_id/report
@@ -156,7 +156,7 @@ Response
 
 Status: 204 NO CONTENT
 
-###Mark Answer as Helpful
+### Mark Answer as Helpful
 Updates an answer to show it was found helpful.
 
 PUT /qa/answers/:answer_id/helpful
@@ -169,7 +169,7 @@ Response
 
 Status: 204 NO CONTENT
 
-###Report Answer
+### Report Answer
 Updates an answer to show it has been reported. Note, this action does not delete the answer, but the answer will not be returned in the above GET request.
 
 PUT /qa/answers/:answer_id/report
