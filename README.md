@@ -47,11 +47,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#docker">Docker</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Tests</a></li>
+    <li><a href="#tests">Tests</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -106,6 +106,31 @@ Here is a copy of the react front-end proejct.
 https://github.com/lerisse/project-catwalk
 
 
+<!-- Tests -->
+## Tests
+
+Initial Postgres query
+
+"Seq Scan on questions  (cost=0.00..8169534.57 rows=9 width=116) (actual time=735.729..3163.416 rows=4 loops=1)"
+"  Filter: ((product_id = 11008) AND (reported = 0))"
+"  Rows Removed by Filter: 3518963"
+"  SubPlan 2"
+"    ->  Aggregate  (cost=894934.45..894934.46 rows=1 width=32) (actual time=686.701..686.701 rows=1 loops=4)"
+"          ->  Seq Scan on answers  (cost=0.00..207166.85 rows=10 width=80) (actual time=166.982..424.105 rows=2 loops=4)"
+"                Filter: (questions.id = question_id)"
+"                Rows Removed by Filter: 6879304"
+"          SubPlan 1"
+"            ->  Aggregate  (cost=68776.75..68776.76 rows=1 width=32) (actual time=131.268..131.268 rows=1 loops=8)"
+"                  ->  Seq Scan on photos  (cost=0.00..68776.74 rows=1 width=132) (actual time=81.244..131.254 rows=0 loops=8)"
+"                        Filter: (answers.id = answer_id)"
+"                        Rows Removed by Filter: 2063759"
+"Planning Time: 0.294 ms"
+"JIT:"
+"  Functions: 18"
+"  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+"  Timing: Generation 1.239 ms, Inlining 48.318 ms, Optimization 71.709 ms, Emission 45.062 ms, Total 166.328 ms"
+"Execution Time: 3199.905 ms"
+
 
 <!-- LICENSE -->
 ## License
@@ -122,20 +147,6 @@ Tristan Lerisse - tristanlerisse@gmail.com
 Project Link: [https://github.com/Sierra-SDC/questions-answers](https://github.com/Sierra-SDC/questions-answers)
 
 
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
 
 
 
