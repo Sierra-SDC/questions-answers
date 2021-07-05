@@ -295,7 +295,13 @@ Planning Time: 0.123 ms
 Execution Time: 0.148 ms
 ```
 
-### Loader.io results (2 AWS EC2 T1 Micro)
+### Loader.io results
+#### Structure: 
+- 2 API Servers : AWS EC2 T1 Micro runing Ubuntu Linux with docker
+- 1 Nginx Server: AWS EC2 T1 Micro
+- 1 Postgres DB Server: AWS EC2 T1 Micro
+- 1 Redis DB Server: AWS EC2 T1 Micro
+
 <img src="/Screenshots/Screenshot from 2021-07-02 11-08-18.png" alt="Loader.io Test">
 
 <!-- LICENSE -->
