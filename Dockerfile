@@ -1,4 +1,5 @@
-FROM node:14
+FROM alpine:latest
+RUN apk add --no-cache nodejs npm
 
 # Create app directory
 WORKDIR /app
